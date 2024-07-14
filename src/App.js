@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const NEWS_API_KEY = "435a65da0d7545a2954e515446836925";
 const newsUrl = "http://127.0.0.1:5000/api/zomoto";
-const zomatoUrl = "https://blog.zomato.com/api/fetch";
-const ZOMATO_API_KEY = "4e754626-be95-11ed-a9d6-15f5bdc28dc";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -25,84 +22,9 @@ function App() {
     }
   };
 
-  const fetchZomatoBlog = async () => {
-    try {
-      const res = await fetch(zomatoUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": ZOMATO_API_KEY,
-        },
-        body: JSON.stringify({
-          variables: { endCursor: "", categoryIds: [759775375], count: 4 },
-          query: `query ($categoryIds: [ID], $endCursor: String = "", $count: Int) {
-            posts(first: $count, after: $endCursor, where: { categoryIn: $categoryIds }) {
-              nodes {
-                date
-                excerpt
-                title
-                slug
-                id
-                author {
-                  node {
-                    name
-                    __typename
-                  }
-                  __typename
-                }
-                categories {
-                  nodes {
-                    name
-                    databaseId
-                    uri
-                    slug
-                    __typename
-                  }
-                  __typename
-                }
-                featuredImage {
-                  node {
-                    altText
-                    mediaItemUrl
-                    __typename
-                  }
-                  __typename
-                }
-                uri
-                __typename
-              }
-              pageInfo {
-                hasNextPage
-                endCursor
-                __typename
-              }
-              __typename
-            }
-          }`,
-        }),
-      });
-      const data = await res.json();
-      const zomatoArticles = data.data.posts.nodes.map((post) => ({
-        title: post.title,
-        description: post.excerpt,
-        url: `https://blog.zomato.com${post.uri}`,
-        urlToImage: post.featuredImage?.node?.mediaItemUrl || "https://via.placeholder.com/400x200",
-        source: { name: "Zomato Blog" },
-        publishedAt: post.date,
-      }));
-      setArticles(zomatoArticles);
-    } catch (error) {
-      console.error("Error fetching Zomato blog posts:", error);
-    }
-  };
-
   const handleCategoryClick = (category) => {
     setCurrentCategory(category);
-    if (category === "zomato") {
-      fetchZomatoBlog();
-    } else {
-      fetchNews(category);
-    }
+    fetchNews(category);
   };
 
   const handleSearch = () => {
