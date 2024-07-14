@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const NEWS_API_KEY = "435a65da0d7545a2954e515446836925";
-const newsUrl = "https://newsapi.org/v2/everything?q=";
+const newsUrl = "http://127.0.0.1:5000/api/zomoto";
 const zomatoUrl = "https://blog.zomato.com/api/fetch";
 const ZOMATO_API_KEY = "4e754626-be95-11ed-a9d6-15f5bdc28dc";
 
@@ -17,7 +17,7 @@ function App() {
 
   const fetchNews = async (query) => {
     try {
-      const res = await fetch(`${newsUrl}${query}&apiKey=${NEWS_API_KEY}`);
+      const res = await fetch(`${newsUrl}`);
       const data = await res.json();
       setArticles(data.articles);
     } catch (error) {
@@ -166,14 +166,14 @@ function App() {
       <main>
         <div className="cards-container container flex">
           {articles.map((article, index) => (
-            <div className="card" key={index} onClick={() => window.open(article.url, "_blank")}>
+            <div className="card" key={index} onClick={() => window.open(article.page_url, "_blank")}>
               <div className="card-header">
-                <img src={article.urlToImage || "https://via.placeholder.com/400x200"} alt="news" />
+                <img src={article.image_url || "https://via.placeholder.com/400x200"} alt="news" />
               </div>
               <div className="card-content">
-                <h3>{article.title}</h3>
+                <h3>{article.short_title}</h3>
                 <h6 className="news-source">{`${article.source.name} · ${new Date(article.publishedAt).toLocaleString("en-US", { timeZone: "Asia/Jakarta" })}`}</h6>
-                <p className="news-desc">{article.description}</p>
+                <p className="news-desc">{article.long_title}</p>
               </div>
             </div>
           ))}
