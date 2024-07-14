@@ -131,26 +131,40 @@ main {
 
 .cards-container {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     gap: 20px;
 }
 
 .card {
     width: calc(33.33% - 20px); /* Adjust card width for responsive layout */
-    min-height: 400px;
+    height: 400px; /* Fixed height for consistent card sizes */
     box-shadow: 0 0 4px #d4ecff;
     border-radius: 4px;
     cursor: pointer;
     background-color: #fff;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box-shadow */
+    display: flex; /* Ensure flex behavior for consistent heights */
+    flex-direction: column; /* Arrange content vertically */
 }
+
+.card:hover {
+    box-shadow: 1px 1px 8px #d4ecff;
+    transform: translateY(-5px) scale(1.05); /* Move card slightly up and scale it */
+}
+
+
+
+
 
 .card:hover {
     box-shadow: 1px 1px 8px #d4ecff;
     background-color: #f9fdff;
     transform: translateY(-2px);
+}
+
+.card-header {
+    flex: 1; /* Allow header to expand */
 }
 
 .card-header img {
@@ -161,6 +175,10 @@ main {
 
 .card-content {
     padding: 12px;
+    flex: 1; /* Allow content to expand */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space evenly */
 }
 
 .news-source {
@@ -196,14 +214,14 @@ main {
         z-index: -1; /* Initially hidden behind the navbar */
         opacity: 0;
         pointer-events: none; /* Disable click events */
-      }
+    }
 
     .nav-links.active {
         transform: translateY(0);
         opacity: 1;
         pointer-events: auto; /* Enable click events */
         z-index: 99; /* Bring menu above the content */
-      }
+    }
 
     .nav-links ul {
         flex-direction: column;

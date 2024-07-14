@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const newsUrl = "http://127.0.0.1:5000/api/zomoto";
+const newsUrl = "http://localhost:5000/api/zomoto";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -14,11 +14,18 @@ function App() {
 
   const fetchNews = async (query) => {
     try {
-      const res = await fetch(`${newsUrl}`);
+      const res = await fetch(newsUrl, {
+        credentials: 'include' // Include credentials in the request
+      });
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
       const data = await res.json();
-      setArticles(data.articles);
+      console.log("Response data:", data); // Log the response data
+      setArticles(data.articles || []); // Set articles or empty array if undefined
     } catch (error) {
       console.error("Error fetching news:", error);
+      setArticles([]); // Set to empty array in case of error
     }
   };
 
@@ -87,18 +94,21 @@ function App() {
 
       <main>
         <div className="cards-container container flex">
-          {articles.map((article, index) => (
-            <div className="card" key={index} onClick={() => window.open(article.page_url, "_blank")}>
-              <div className="card-header">
-                <img src={article.image_url || "https://via.placeholder.com/400x200"} alt="news" />
+          {articles && articles.length > 0 ? (
+            articles.map((article, index) => (
+              <div className="card" key={index} onClick={() => window.open(article.page_url, "_blank")}>
+                <div className="card-header">
+                  <img src={article.image_url || "https://via.placeholder.com/400x200"} alt="news" />
+                </div>
+                <div className="card-content">
+                  <h3>{article.short_title}</h3>
+                  <p className="news-desc">{article.long_title}</p>
+                </div>
               </div>
-              <div className="card-content">
-                <h3>{article.short_title}</h3>
-                <h6 className="news-source">{`${article.source.name} · ${new Date(article.publishedAt).toLocaleString("en-US", { timeZone: "Asia/Jakarta" })}`}</h6>
-                <p className="news-desc">{article.long_title}</p>
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p>No articles available</p>
+          )}
         </div>
       </main>
     </div>
