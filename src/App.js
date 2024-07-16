@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const newsUrl = "http://localhost:5000/api/zomoto";
+const newsUrl = "http://3.231.236.198:5000/api/zomoto";
 
 function App() {
   const [articles, setArticles] = useState([]);
