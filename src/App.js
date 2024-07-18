@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const newsUrl = "http://3.231.236.198:5000/api/zomoto";
+const newsUrl = "http://127.0.0.1:8080/api/zomoto";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -101,6 +101,12 @@ function App() {
                   <img src={article.image_url || "https://via.placeholder.com/400x200"} alt="news" />
                 </div>
                 <div className="card-content">
+                <div className="blog-meta">
+                  <p className="blog-author">{article.author}</p>
+                  <p className="blog-date">{article.blog_date}</p>
+                  <p className="blog-read-time">{article.blog_read_time}</p>
+                </div>
+
                   <h3>{article.short_title}</h3>
                   <p className="news-desc">{article.long_title}</p>
                 </div>

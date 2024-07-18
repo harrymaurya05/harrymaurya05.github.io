@@ -256,3 +256,39 @@ main {
         width: 100%; /* Full width for single column on smaller screens */
     }
 }
+
+
+/* Add your existing CSS here */
+
+.card-content {
+    padding: 15px;
+  }
+  
+  .card-content h3 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .card-content .news-desc {
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  .blog-meta {
+    display: flex;
+  gap: 10px; /* Add space between items */
+
+  }
+  
+  .blog-meta p {
+    margin:0;
+  }
+  
+  .blog-author {
+    font-weight: bold;
+  }
+  
+  .blog-date, .blog-read-time {
+    font-style: italic;
+  }
+  
