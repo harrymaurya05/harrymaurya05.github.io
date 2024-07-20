@@ -49,7 +49,7 @@ ul {
 
 nav {
     background-color: #f3faff;
-    box-shadow: 0 0 4px #bbd0e2;
+    box-shadow: 0 0 35px #bbd0e2;
     position: fixed;
     top: 0;
     left: 0;
@@ -153,16 +153,6 @@ main {
     transform: translateY(-5px) scale(1.05); /* Move card slightly up and scale it */
 }
 
-
-
-
-
-.card:hover {
-    box-shadow: 1px 1px 8px #d4ecff;
-    background-color: #f9fdff;
-    transform: translateY(-2px);
-}
-
 .card-header {
     flex: 1; /* Allow header to expand */
 }
@@ -257,38 +247,66 @@ main {
     }
 }
 
-
 /* Add your existing CSS here */
 
 .card-content {
     padding: 15px;
-  }
-  
-  .card-content h3 {
+}
+
+.card-content h3 {
     margin: 0;
-    font-size: 1.5em;
-  }
-  
-  .card-content .news-desc {
+    font-size: 1.2em; /* Decrease font size for the title */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Show maximum 2 lines */
+    -webkit-box-orient: vertical;
+}
+
+.card-content .news-desc {
     margin: 10px 0;
     color: #555;
-  }
-  
-  .blog-meta {
-    display: flex;
-  gap: 10px; /* Add space between items */
+    font-size: 0.9em; /* Decrease font size for the description */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Show maximum 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-  }
-  
-  .blog-meta p {
-    margin:0;
-  }
-  
-  .blog-author {
+.blog-meta {
+    display: flex;
+    gap: 10px; /* Add space between items */
+    font-size: 0.75em; /* Decrease font size */
+}
+
+.blog-meta p {
+    margin: 0;
+}
+
+.blog-author {
     font-weight: bold;
+}
+
+.blog-date,
+.blog-read-time {
+    font-style: italic;
+    font-size: 0.85em; /* Decrease font size */
+}
+
+.nav-links .flex {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
   
-  .blog-date, .blog-read-time {
-    font-style: italic;
+  .nav-links .nav-item {
+    margin-right: 10px; /* Adjust spacing between items */
+    cursor: pointer;
+  }
+  
+  .nav-links .space {
+    width: 10px; /* Adjust width for space */
   }
   
