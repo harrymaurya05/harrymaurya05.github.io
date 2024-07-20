@@ -123,7 +123,9 @@ function App() {
                   </div>
                   <h3>{article.short_title}</h3>
                   <p className="news-desc">
-                    {article.long_title.length > 100 ? `${article.long_title.substring(0, 100)}... read more` : article.long_title}
+                    {article.long_title && article.long_title.length > 100 
+                      ? `${article.long_title.substring(0, 100)}... read more` 
+                      : article.long_title || "No description available"}
                   </p>
                 </div>
               </div>
