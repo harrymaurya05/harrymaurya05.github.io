@@ -14,27 +14,27 @@ function App() {
 
   const fetchNews = async (query) => {
     // Define the base URL
-    const baseUrl = "http://127.0.0.1:8080/api/";
+    const baseUrl = "http://127.0.0.1:8080/api/articles";
     // Determine the endpoint based on the query parameter
     const endpoint = query ? query : "zomato";
     // Construct the full URL
-    const newsUrl = `${baseUrl}${endpoint}`;
-  
+    const newsUrl = `${baseUrl}`+"?company="+`${endpoint}`;
+
     try {
       // Make the fetch call with credentials included
       const res = await fetch(newsUrl, {
         credentials: 'include' // Include credentials in the request
       });
-  
+
       // Check if the response is OK
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }
-  
+
       // Parse the response data as JSON
       const data = await res.json();
       console.log("Response data:", data); // Log the response data
-  
+
       // Ensure data.articles is an array before setting
       if (Array.isArray(data.articles)) {
         setArticles(data.articles);
@@ -75,13 +75,13 @@ function App() {
               >
                 Zomato
               </li>
-              <li className="space"></li> {/* Add a blank list item for space */}
               <li
                 className={`hover-link nav-item ${currentCategory === "paytm" && "active"}`}
                 onClick={() => handleCategoryClick("paytm")}
               >
                 Paytm
               </li>
+              <li className="space"></li> {/* Space item for alignment */}
               <li
                 className={`hover-link nav-item ${currentCategory === "phonepe" && "active"}`}
                 onClick={() => handleCategoryClick("phonepe")}
@@ -89,6 +89,7 @@ function App() {
                 PhonePe
               </li>
             </ul>
+
           </div>
 
           <div className="search-bar flex">
@@ -123,9 +124,9 @@ function App() {
                   </div>
                   <h3>{article.short_title}</h3>
                   <p className="news-desc">
-                    {article.long_title && article.long_title.length > 100 
-                      ? `${article.long_title.substring(0, 100)}... read more` 
-                      : article.long_title || "No description available"}
+                    {article.long_title && article.long_title.length > 100
+                      ? `${article.long_title.substring(0, 100)}... read more`
+                      : article.long_title || null}
                   </p>
                 </div>
               </div>

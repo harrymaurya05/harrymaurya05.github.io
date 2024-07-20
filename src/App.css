@@ -250,18 +250,26 @@ main {
 /* Add your existing CSS here */
 
 .card-content {
-    padding: 15px;
+    padding: 12px;
+    flex: 1; /* Allow content to expand */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space evenly */
+    height: 100%; /* Ensure full height for flex items */
 }
+
 
 .card-content h3 {
     margin: 0;
-    font-size: 1.2em; /* Decrease font size for the title */
+    font-size: 1.2em; /* Adjust as needed */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* Show maximum 2 lines */
     -webkit-box-orient: vertical;
+    line-height: 1.4em; /* Adjust line height if needed */
 }
+
 
 .card-content .news-desc {
     margin: 10px 0;
@@ -310,3 +318,4 @@ main {
     width: 10px; /* Adjust width for space */
   }
   
+
