@@ -92,7 +92,10 @@ nav {
 }
 
 .nav-item.active {
-    color: var(--accent-color);
+    color: #eaa79c;
+}
+.nav-item.false {
+    color: rgb(252, 246, 246);
 }
 
 .search-bar {
@@ -105,14 +108,14 @@ nav {
     width: 100%; /* Occupy full width */
     max-width: 300px; /* Limit maximum width */
     padding: 12px;
-    border-radius: 4px;
-    border: 2px solid #bbd0e2;
+    border-radius: 8px;
     font-family: "Roboto", sans-serif;
 }
 
+
 .search-button {
-    background-color: var(--accent-color);
-    color: white;
+    background-color: #eaa79c;
+    color: #000000;
     padding: 10px 20px; /* Increase padding */
     border: none;
     border-radius: 4px;
