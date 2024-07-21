@@ -92,7 +92,7 @@ nav {
 }
 
 .nav-item.active {
-    color: #eaa79c;
+    color: #e4beb8 !important;
 }
 .nav-item.false {
     color: rgb(252, 246, 246);
@@ -124,7 +124,7 @@ nav {
 }
 
 .search-button:hover {
-    background-color: var(--accent-color-dark);
+    background-color: #eea89d;
 }
 
 main {
@@ -315,6 +315,8 @@ main {
   .nav-links .nav-item {
     margin-right: 10px; /* Adjust spacing between items */
     cursor: pointer;
+    color: #eaa79c;
+
   }
   
   .nav-links .space {
