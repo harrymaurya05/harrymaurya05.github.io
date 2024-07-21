@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const newsUrl = "http://127.0.0.1:8080/api/zomato";
-
 function App() {
   const [articles, setArticles] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("zomato");
@@ -15,10 +13,8 @@ function App() {
   const fetchNews = async (query) => {
     // Define the base URL
     const baseUrl = "http://127.0.0.1:8080/api/articles";
-    // Determine the endpoint based on the query parameter
-    const endpoint = query ? query : "zomato";
     // Construct the full URL
-    const newsUrl = `${baseUrl}`+"?company="+`${endpoint}`;
+    const newsUrl = `${baseUrl}?company=${query || currentCategory}`;
 
     try {
       // Make the fetch call with credentials included
@@ -65,7 +61,7 @@ function App() {
       <nav>
         <div className="main-nav container flex">
           <a href="#" onClick={reload} className="company-logo">
-            <img src="/assets/logo.png" alt="company logo" />
+            <img src="/assets/uniblog-high-resolution-logo-transparent.png" alt="company logo" />
           </a>
           <div className="nav-links">
             <ul className="flex">
@@ -89,7 +85,6 @@ function App() {
                 PhonePe
               </li>
             </ul>
-
           </div>
 
           <div className="search-bar flex">
@@ -97,7 +92,7 @@ function App() {
               id="search-text"
               type="text"
               className="news-input"
-              placeholder="e.g. Science"
+              placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
