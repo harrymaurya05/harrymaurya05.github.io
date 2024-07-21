@@ -11,27 +11,21 @@ function App() {
   }, [currentCategory]);
 
   const fetchNews = async (query) => {
-    // Define the base URL
     const baseUrl = "http://127.0.0.1:8080/api/articles";
-    // Construct the full URL
     const newsUrl = `${baseUrl}?company=${query || currentCategory}`;
 
     try {
-      // Make the fetch call with credentials included
       const res = await fetch(newsUrl, {
-        credentials: 'include' // Include credentials in the request
+        credentials: 'include'
       });
 
-      // Check if the response is OK
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }
 
-      // Parse the response data as JSON
       const data = await res.json();
-      console.log("Response data:", data); // Log the response data
+      console.log("Response data:", data);
 
-      // Ensure data.articles is an array before setting
       if (Array.isArray(data.articles)) {
         setArticles(data.articles);
       } else {
@@ -39,7 +33,6 @@ function App() {
       }
     } catch (error) {
       console.error("Error fetching news:", error);
-      // Set to empty array in case of error
       setArticles([]);
     }
   };
@@ -52,8 +45,15 @@ function App() {
   const handleSearch = () => {
     if (searchQuery.trim() !== "") {
       fetchNews(searchQuery);
-      setCurrentCategory(null); // Reset current category selection
+      setCurrentCategory(null);
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -61,7 +61,7 @@ function App() {
       <nav>
         <div className="main-nav container flex">
           <a href="#" onClick={reload} className="company-logo">
-            <img src="/assets/uniblog-high-resolution-logo-transparent.png" alt="company logo" />
+            <img src="assets/uniBlog_logo.png" alt="company logo" />
           </a>
           <div className="nav-links">
             <ul className="flex">
@@ -77,7 +77,7 @@ function App() {
               >
                 Paytm
               </li>
-              <li className="space"></li> {/* Space item for alignment */}
+              <li className="space"></li>
               <li
                 className={`hover-link nav-item ${currentCategory === "phonepe" && "active"}`}
                 onClick={() => handleCategoryClick("phonepe")}
@@ -131,6 +131,16 @@ function App() {
           )}
         </div>
       </main>
+
+      <footer className="footer">
+        <div className="container">
+          <p>&copy; 2024 Your Company. All rights reserved.</p>
+        </div>
+      </footer>
+
+      <button className="back-to-top-floating" onClick={scrollToTop}>
+        ↑
+      </button>
     </div>
   );
 }

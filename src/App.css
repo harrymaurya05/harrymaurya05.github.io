@@ -8,15 +8,19 @@
 }
 
 :root {
-    --primary-text-color: #183b56;
+    --primary-color: #F9CC0B;
+    --secondary-color: #F9F9F9;
+    --third-color: #0C1D36;
+    --primary-text-color: #0C1D36; /* Updated primary text color */
     --secondary-text-color: #577592;
     --accent-color: #2294ed;
-    --accent-color-dark: #1d69a3;
+    --accent-color-dark: #F9F9F9;
 }
 
 body {
     font-family: "Poppins", sans-serif;
     color: var(--primary-text-color);
+    background-color: var(--secondary-color); /* Set background color */
     margin: 0;
     padding: 0;
 }
@@ -48,7 +52,7 @@ ul {
 }
 
 nav {
-    background-color: #000000;
+    background-color: var(--third-color); /* Updated background color */
     box-shadow: 0 0 35px #bbd0e2;
     position: fixed;
     top: 0;
@@ -84,18 +88,15 @@ nav {
 }
 
 .hover-link:hover {
-    color: var(--secondary-text-color);
-}
-
-.hover-link:active {
-    color: red;
+    color: var(--primary-color); /* Updated hover color */
 }
 
 .nav-item.active {
-    color: #e4beb8 !important;
+    color: var(--primary-color); /* Updated active color */
 }
+
 .nav-item.false {
-    color: rgb(252, 246, 246);
+    color: var(--secondary-color); /* Updated false color */
 }
 
 .search-bar {
@@ -105,17 +106,18 @@ nav {
 }
 
 .news-input {
-    width: 100%; /* Occupy full width */
-    max-width: 300px; /* Limit maximum width */
+    width: 100%;
+    max-width: 300px;
     padding: 12px;
     border-radius: 8px;
+    border: 1px solid var(--primary-color);
     font-family: "Roboto", sans-serif;
+    color: var(--third-color);
+    font-size: small;
 }
-
-
 .search-button {
-    background-color: #eaa79c;
-    color: #000000;
+    background-color: var(--primary-color); /* Updated background color */
+    color: var(--third-color); /* Updated text color */
     padding: 10px 20px; /* Increase padding */
     border: none;
     border-radius: 4px;
@@ -124,7 +126,7 @@ nav {
 }
 
 .search-button:hover {
-    background-color: #eea89d;
+    background-color: var(--accent-color-dark);
 }
 
 main {
@@ -141,10 +143,10 @@ main {
 .card {
     width: calc(33.33% - 20px); /* Adjust card width for responsive layout */
     height: 400px; /* Fixed height for consistent card sizes */
-    box-shadow: 0 0 4px #d4ecff;
+    box-shadow: 0 0 4px var(--accent-color-dark);
     border-radius: 4px;
     cursor: pointer;
-    background-color: #fff;
+    background-color: var(--secondary-color); /* Updated background color */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box-shadow */
     display: flex; /* Ensure flex behavior for consistent heights */
@@ -199,7 +201,7 @@ main {
         top: 64px; /* Adjust top position */
         left: 0;
         right: 0;
-        background-color: #f3faff;
+        background-color: var(--secondary-color); /* Updated background color */
         box-shadow: 0 0 4px #bbd0e2;
         padding: 16px;
         transform: translateY(-100%);
@@ -261,7 +263,6 @@ main {
     height: 100%; /* Ensure full height for flex items */
 }
 
-
 .card-content h3 {
     margin: 0;
     font-size: 1.2em; /* Adjust as needed */
@@ -272,7 +273,6 @@ main {
     -webkit-box-orient: vertical;
     line-height: 1.4em; /* Adjust line height if needed */
 }
-
 
 .card-content .news-desc {
     margin: 10px 0;
@@ -310,17 +310,58 @@ main {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .nav-links .nav-item {
+}
+
+.nav-links .nav-item {
     margin-right: 10px; /* Adjust spacing between items */
     cursor: pointer;
-    color: #eaa79c;
+}
 
-  }
-  
-  .nav-links .space {
+.nav-links .space {
     width: 10px; /* Adjust width for space */
+}
+/* Existing CSS */
+
+.back-to-top-floating {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: var(--primary-color); /* Button background color */
+    color: var(--third-color); /* Button text color */
+    border: none;
+    /* border-radius: 50%; */
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+    transition: background-color 1ms ease;
   }
   
-
+  .back-to-top-floating:hover {
+    background-color: var(--accent-color); /* Change background on hover */
+  }
+  
+  /* Additional CSS for Footer */
+  
+  .footer {
+    background-color: var(--third-color); /* Footer background color */
+    color: var(--secondary-color); /* Footer text color */
+    text-align: center;
+    padding: 20px 0; /* Adjust padding as needed */
+    width: 100%;
+    position: relative; /* Ensure the footer position is relative */
+  }
+  
+  .footer .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer p {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    color: var(--secondary-color);
+  }
+  
+  
