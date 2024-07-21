@@ -2,7 +2,60 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const dummyArticles = [
-  // Dummy data as before
+  {
+    image_url: "https://via.placeholder.com/400x200",
+    author: "John Doe",
+    blog_date: "2024-07-21",
+    blog_read_time: "5 min read",
+    short_title: "Dummy Title 1",
+    long_title: "This is a longer description for the dummy article 1. It provides additional context and details.",
+    page_url: "#"
+  },
+  {
+    image_url: "https://via.placeholder.com/400x200",
+    author: "Jane Smith",
+    blog_date: "2024-07-20",
+    blog_read_time: "4 min read",
+    short_title: "Dummy Title 2",
+    long_title: "This is a longer description for the dummy article 2. It provides additional context and details.",
+    page_url: "#"
+  },
+  {
+    image_url: "https://via.placeholder.com/400x200",
+    author: "Alice Johnson",
+    blog_date: "2024-07-19",
+    blog_read_time: "6 min read",
+    short_title: "Dummy Title 3",
+    long_title: "This is a longer description for the dummy article 3. It provides additional context and details.",
+    page_url: "#"
+  },
+  {
+    image_url: "https://via.placeholder.com/400x200",
+    author: "Bob Brown",
+    blog_date: "2024-07-18",
+    blog_read_time: "3 min read",
+    short_title: "Dummy Title 4",
+    long_title: "This is a longer description for the dummy article 4. It provides additional context and details.",
+    page_url: "#"
+  },
+  {
+    image_url: "https://via.placeholder.com/400x200",
+    author: "Charlie Davis",
+    blog_date: "2024-07-17",
+    blog_read_time: "7 min read",
+    short_title: "Dummy Title 5",
+    long_title: "This is a longer description for the dummy article 5. It provides additional context and details.",
+    page_url: "#"
+  },
+  {
+    image_url: "https://via.placeholder.com/400x200",
+    author: "Dana Evans",
+    blog_date: "2024-07-16",
+    blog_read_time: "5 min read",
+    short_title: "Dummy Title 6",
+    long_title: "This is a longer description for the dummy article 6. It provides additional context and details.",
+    page_url: "#"
+  }
 ];
 
 function App() {
@@ -17,7 +70,7 @@ function App() {
     const cachedCategory = localStorage.getItem('currentCategory');
 
     if (cachedArticles && cachedCategory === currentCategory) {
-      console.log("data already present!!");
+      // console.log("data already present!!");
       setArticles(JSON.parse(cachedArticles));
       setIsLoading(false);
     } else {
@@ -39,7 +92,7 @@ function App() {
       }
 
       const data = await res.json();
-      console.log("Response data:", data);
+      // console.log("Response data:", data);
 
       if (Array.isArray(data.articles)) {
         if (data.articles.length === 0) {
@@ -58,7 +111,7 @@ function App() {
       console.error("Error fetching news:", error);
       setArticles(dummyArticles);
       localStorage.setItem('articles', JSON.stringify(dummyArticles)); // Cache dummy data
-      setError("Failed to load data. Displaying dummy content.");
+      //setError("Failed to load data. Displaying dummy content.");
     } finally {
       setIsLoading(false);
     }

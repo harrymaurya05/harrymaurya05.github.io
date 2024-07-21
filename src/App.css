@@ -80,6 +80,8 @@ nav {
     display: flex;
     align-items: center;
     gap: 16px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14.33px;
 }
 
 .hover-link {
@@ -338,7 +340,7 @@ main {
   }
   
   .back-to-top-floating:hover {
-    background-color: var(--accent-color); /* Change background on hover */
+    background-color: var(--accent-color-dark); /* Change background on hover */
   }
   
   /* Additional CSS for Footer */
