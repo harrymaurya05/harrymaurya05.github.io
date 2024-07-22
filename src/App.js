@@ -88,12 +88,13 @@ function App() {
     const cachedArticles = localStorage.getItem('articles');
     const cachedCategory = localStorage.getItem('currentCategory');
 
-    if (cachedArticles && cachedCategory === currentCategory) {
-      setArticles(JSON.parse(cachedArticles));
-      setIsLoading(false);
-    } else {
-      fetchNews(currentCategory);
-    }
+    // if (cachedArticles && cachedCategory === currentCategory) {
+    //   setArticles(JSON.parse(cachedArticles));
+    //   setIsLoading(false);
+    // } else {
+    //   fetchNews(currentCategory);
+    // }
+    fetchNews(currentCategory);
   }, [currentCategory]);
 
   useEffect(() => {
@@ -101,7 +102,7 @@ function App() {
   }, []);
 
   const fetchCompanies = async () => {
-    const baseUrl = "http://127.0.0.1:8080/api/companies";
+    const baseUrl = "http://3.231.236.198:8080/api/companies";
 
     try {
       const res = await fetch(baseUrl, {
@@ -121,7 +122,7 @@ function App() {
   };
 
   const fetchNews = async (query) => {
-    const baseUrl = "http://127.0.0.1:8080/api/articles";
+    const baseUrl = "http://3.231.236.198:8080/api/articles";
     const newsUrl = `${baseUrl}?company=${query || currentCategory}`;
 
     try {
@@ -237,7 +238,7 @@ function App() {
 
       <footer className="footer">
         <div className="container footer-text">
-          <p>&copy; 2024 Your Company. All rights reserved.</p>
+          <p>&copy; 2024 UniBlog. All rights reserved.</p>
         </div>
       </footer>
 
