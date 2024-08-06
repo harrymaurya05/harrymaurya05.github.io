@@ -77,8 +77,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
-  //const base_ip = "3.231.236.198";
-  const base_ip = "127.0.0.1";
+  const base_ip = "3.231.236.198";
+  //const base_ip = "127.0.0.1";
+  //const port = "8081";
+  const port = "8080";
   const companyListDummy = [
     { name: "zomato" },
     { name: "paytm" },
@@ -103,7 +105,7 @@ function App() {
   }, []);
 
   const fetchCompanies = async () => {
-    const baseUrl = `http://${base_ip}:8080/api/companies`;
+    const baseUrl = `http://${base_ip}:${port}/api/companies`;
 
     try {
       const res = await fetch(baseUrl, {
@@ -123,7 +125,7 @@ function App() {
   };
 
   const fetchNews = async (query) => {
-    const baseUrl = `http://${base_ip}:8080/api/articles`;
+    const baseUrl = `http://${base_ip}:${port}/api/articles`;
     const newsUrl = `${baseUrl}?company=${query || currentCategory}`;
     console.log(newsUrl);
     try {
