@@ -105,7 +105,7 @@ function App() {
   }, []);
 
   const fetchCompanies = async () => {
-    const baseUrl = `http://${base_ip}:${port}/api/companies`;
+    const baseUrl = `https://uniblog.click/api/companies`;
 
     try {
       const res = await fetch(baseUrl, {
@@ -125,7 +125,7 @@ function App() {
   };
 
   const fetchNews = async (query) => {
-    const baseUrl = `http://${base_ip}:${port}/api/articles`;
+    const baseUrl = `https://uniblog.click/api/articles`;
     const newsUrl = `${baseUrl}?company=${query || currentCategory}`;
     console.log(newsUrl);
     try {
