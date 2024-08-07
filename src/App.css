@@ -274,22 +274,6 @@ footer {
     margin-left: 5px;
     height: auto;
   }
-  .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #fff;
-    box-shadow: 0 0 30px rgba(127, 137, 161, 0.25);
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    height: 100%;
-    margin: 0px 20px 0px 20px;
-}
-}
-
-@media screen and (min-width: 128px) and (max-width: 480px) {
   .search-bar {
     display: flex;
     align-items: center;
