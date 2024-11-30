@@ -227,8 +227,9 @@ function App() {
       </footer>
 
       <button className="back-to-top-floating" onClick={scrollToTop}>
-
+        <i className="fas fa-arrow-up"></i> {/* Font Awesome Arrow Icon */}
       </button>
+
 
       {/* Search Popup */}
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">

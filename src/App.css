@@ -246,20 +246,35 @@ footer {
   position: fixed;
   bottom: 65px;
   right: 20px;
-  width: 40px;
+  width: 50px; /* Adjust size */
+  height: 50px; /* Adjust size */
   background-color: var(--primary-color);
-  color: var(--third-color);
-  padding: 10px;
+  color: var(--primary-color);
+  padding: 12px;
   border: none;
-  /* border-radius: 50%; */
-  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  border-radius: 50%; /* Circular button */
   transition: background-color 0.3s ease;
 }
 
 .back-to-top-floating:hover {
-  background-color: #fff;
+  background-color: var(--third-color); /* Change background on hover */
 }
+
+.back-to-top-floating i {
+  font-size: 28px; /* Increase icon size */
+  color: var(--third-color); /* Icon color */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.back-to-top-floating:hover i {
+  color: var(--primary-color); /* Icon color change on hover */
+}
+
+
 
 @media screen and (min-width: 480px) {
   .company-logo img {
