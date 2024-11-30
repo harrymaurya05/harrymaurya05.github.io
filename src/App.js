@@ -119,8 +119,8 @@ function App() {
   }, []);
 
   const fetchCompanies = async () => {
-    //const baseUrl = `https://uniblog.click/api/companies`;
-    const baseUrl = `http://localhost:8080/api/companies`;
+    const baseUrl = `https://uniblog.click/api/companies`;
+    //const baseUrl = `http://localhost:8080/api/companies`;
 
     try {
       const res = await fetch(baseUrl, {
@@ -140,8 +140,8 @@ function App() {
   };
 
   const fetchNews = async (query) => {
-    //const baseUrl = `https://uniblog.click/api/articles`;
-    const baseUrl = `http://localhost:8080/api/articles`;
+    const baseUrl = `https://uniblog.click/api/articles`;
+    //const baseUrl = `http://localhost:8080/api/articles`;
     const newsUrl = `${baseUrl}?company=${query || currentCategory}`;
     console.log(newsUrl);
     try {
