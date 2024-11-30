@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-
+import CardTamplate from './components/CardTamplate';
 import './App.css';
 
 const dummyArticles = [
@@ -71,14 +71,15 @@ const dummyArticles = [
 
 function App() {
   const [articles, setArticles] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // Track current page
   const [currentCategory, setCurrentCategory] = useState("zomato");
   const [searchQuery, setSearchQuery] = useState("");
   const [companyList, setCompanyList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
-  const base_ip = "3.231.236.198";
-  //const base_ip = "127.0.0.1";
+  //const base_ip = "3.231.236.198";
+  const base_ip = "127.0.0.1";
   //const port = "8081";
   const port = "8080";
   const companyListDummy = [
@@ -104,8 +105,22 @@ function App() {
     fetchCompanies();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        setCurrentPage((prevPage) => prevPage + 1); // Load next page
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const fetchCompanies = async () => {
-    const baseUrl = `https://uniblog.click/api/companies`;
+    //const baseUrl = `https://uniblog.click/api/companies`;
+    const baseUrl = `http://localhost:8080/api/companies`;
 
     try {
       const res = await fetch(baseUrl, {
@@ -125,7 +140,8 @@ function App() {
   };
 
   const fetchNews = async (query) => {
-    const baseUrl = `https://uniblog.click/api/articles`;
+    //const baseUrl = `https://uniblog.click/api/articles`;
+    const baseUrl = `http://localhost:8080/api/articles`;
     const newsUrl = `${baseUrl}?company=${query || currentCategory}`;
     console.log(newsUrl);
     try {
@@ -201,43 +217,8 @@ function App() {
           </div>
         </div>
       </nav>
-
-      <main>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <div className="error-message">
-            <p>{error}</p>
-          </div>
-        ) : (
-          <div className="cards-container container flex">
-            {Array.isArray(articles) && articles.length > 0 ? (
-              articles.map((article, index) => (
-                <div className="card" key={index} onClick={() => window.open(article.page_url, "_blank")}>
-                  <div className="card-header">
-                    <img src={article.image_url || "https://via.placeholder.com/400x200"} alt="news" />
-                  </div>
-                  <div className="card-content">
-                    <div className="blog-meta">
-                      <p className="blog-author">{article.author}</p>
-                      <p className="blog-date">{article.blog_date}</p>
-                      <p className="blog-read-time">{article.blog_read_time}</p>
-                    </div>
-                    <h3>{article.short_title}</h3>
-                    <p className="news-desc">
-                      {article.long_title && article.long_title.length > 100
-                        ? `${article.long_title.substring(0, 100)}... read more`
-                        : article.long_title || null}
-                    </p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p>No articles available</p>
-            )}
-          </div>
-        )}
-      </main>
+      <CardTamplate isLoading={isLoading} error={error} articles={articles}  />
+      
 
       <footer className="footer">
         <div className="container footer-text">
@@ -246,7 +227,7 @@ function App() {
       </footer>
 
       <button className="back-to-top-floating" onClick={scrollToTop}>
-        ↑
+
       </button>
 
       {/* Search Popup */}
