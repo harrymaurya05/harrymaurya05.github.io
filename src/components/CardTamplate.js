@@ -20,9 +20,14 @@ function CardTamplate({isLoading,error,articles}){
                     <div className="blog-meta">
                     {article.author && article.author.trim() !== "" && (
                       <p className="blog-author">{article.author}</p>
-                    )}                      
-                    <p className="blog-date">{article.blog_date}</p>
-                    <p className="blog-read-time">{article.blog_read_time}</p>
+                    )}     
+                    {article.blog_date && article.blog_date.trim() !== "" && (
+                      <p className="blog-date">{article.blog_date}</p>
+                    )} 
+                    {article.blog_date && article.blog_date.trim() !== "" && (
+                      <p className="blog-read-time">{article.blog_date}</p>
+                    )}                  
+
                     </div>
                     <h3>{article.short_title}</h3>
                     <p className="news-desc">
