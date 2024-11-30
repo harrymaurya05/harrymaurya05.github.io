@@ -24,10 +24,10 @@ function CardTamplate({isLoading,error,articles}){
                     {article.blog_date && article.blog_date.trim() !== "" && (
                       <p className="blog-date">{article.blog_date}</p>
                     )} 
-                    {article.blog_date && article.blog_date.trim() !== "" && (
-                      <p className="blog-read-time">{article.blog_date}</p>
+                    {article.blog_read_time && article.blog_read_time.trim() !== "" && (
+                      <p className="blog-read-time">{article.blog_read_time}</p>
                     )}                  
-
+                    
                     </div>
                     <h3>{article.short_title}</h3>
                     <p className="news-desc">
