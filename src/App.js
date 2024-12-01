@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -72,7 +73,7 @@ const dummyArticles = [
 function App() {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); // Track current page
-  const [currentCategory, setCurrentCategory] = useState("zomato");
+  const [currentCategory, setCurrentCategory] = useState("airbnb");
   const [searchQuery, setSearchQuery] = useState("");
   const [companyList, setCompanyList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -204,6 +205,14 @@ function App() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>UniBlog - One Place Learning</title>
+        <meta name="description" content="Learn about tech blogs, news, and updates." />
+        <meta name="keywords" content="Tech blogs, learning, news" />
+      </Helmet>
+      {/* Rest of your component */}
+   
     <div className="App">
       <nav>
         <div className="main-nav container flex">
@@ -272,6 +281,7 @@ function App() {
         </DialogActions>
       </Dialog>
     </div>
+    </>
   );
 }
 
