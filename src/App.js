@@ -144,7 +144,7 @@ function App() {
     const baseUrl = `https://uniblog.click/api/articles`;
     //const baseUrl = `http://localhost:8080/api/articles`;
     const newsUrl = `${baseUrl}?company=${query || currentCategory}`;
-    console.log(newsUrl);
+    //console.log(newsUrl);
     try {
       const res = await fetch(newsUrl, {
         credentials: 'include'
