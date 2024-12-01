@@ -73,7 +73,7 @@ const dummyArticles = [
 function App() {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); // Track current page
-  const [currentCategory, setCurrentCategory] = useState("airbnb");
+  const [currentCategory, setCurrentCategory] = useState("uber");
   const [searchQuery, setSearchQuery] = useState("");
   const [companyList, setCompanyList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
